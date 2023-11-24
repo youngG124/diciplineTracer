@@ -1,0 +1,34 @@
+<div id="annual_calendar">
+
+</div>
+
+<script>
+    tbody = document.createElement('table');
+    tbody.style = 'border-spacing:5px;';
+
+    const day_arr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    const week_arr = [];
+
+    for(let i=0; i<55; i++) {
+        week_arr.push(i);
+    }
+
+    console.log(week_arr);
+
+    day_arr.forEach(function(day) {
+        let row = document.createElement('tr');
+        row.className = day;
+
+        week_arr.forEach(function(week) {
+            let col = document.createElement('td');
+            col.style.width='12px';
+            col.style.height='12px';
+            col.style.backgroundColor='lightgrey';
+            row.appendChild(col);
+        });
+
+        tbody.appendChild(row);
+    });
+
+    document.getElementById('annual_calendar').appendChild(tbody);
+</script>
