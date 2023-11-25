@@ -9,21 +9,18 @@
     const day_arr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
     const week_arr = [];
 
-    for(let i=0; i<55; i++) {
+    for(let i=0; i<53; i++) {
         week_arr.push(i);
     }
-
-    console.log(week_arr);
-
+    
     day_arr.forEach(function(day) {
         let row = document.createElement('tr');
         row.className = day;
 
         week_arr.forEach(function(week) {
-            let col = document.createElement('td');
-            col.style.width='12px';
-            col.style.height='12px';
-            col.style.backgroundColor='lightgrey';
+            let col = document.createElement('td');           
+
+            col.style = 'width:12px; height:14px; background-Color:lightgrey; border-radius:2px;';
             row.appendChild(col);
         });
 
