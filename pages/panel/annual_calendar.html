@@ -3,6 +3,8 @@
 </div>
 
 <script>
+
+    // create annual calander
     tbody = document.createElement('table');
     tbody.style = 'border-spacing:5px;';
 
@@ -18,7 +20,8 @@
         row.className = day;
 
         week_arr.forEach(function(week) {
-            let col = document.createElement('td');           
+            let col = document.createElement('td');
+            col.id = day+', '+week;  
 
             col.style = 'width:12px; height:14px; background-Color:lightgrey; border-radius:2px;';
             row.appendChild(col);
