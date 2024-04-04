@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자산배분 투자하는 개발자의 기록</title>
+    <link rel="stylesheet" href="../pages/style.css" type="text/css">
+
+    <style>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        body{
+            background:#f2f4f7;
+        }
+
+
+
+        /*header*/
+        .header {
+            height: 130px;
+            width: 1080px;
+            margin: auto;
+        }
+        .title {
+            height:100%;
+            width : 50%;
+            font-size:1.4em;
+            float:left;
+            position:relative;
+            display:flex;
+            align-items: center; /* vertically centers the inner div */
+        }
+        .title-content {
+            bottom:45%;
+            font-weight: bold;
+            font-size:26px;
+        }
+
+        .navigator {
+            height:100%;
+            width : 50%;
+            float:right;
+            position:relative;
+        }
+        .navigator-content {
+            position: absolute;
+            bottom: 10%;
+            right:0;
+        }
+
+
+
+
+
+        /*main*/
+        .main-container {
+            background:#f2f4f7;
+            width: 1080px;
+            height:auto;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 100%; /* 각 행(세로줄)의 길이 */
+            grid-template-rows: 20% 40% 40% 40% 40% 40%; /* 각 열(가로줄)의 길이 */
+            display:block;
+        }
+        .box-default {
+            background: lightgray;
+            width: 100%;
+            border: 1px solid #dee3eb;
+            display:flex;
+            height:380px;
+        }
+        .box-default-1 {
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+        .temp-box-content {
+            margin:auto;
+        }
+        .temp-box-content2 {
+            padding:3%;
+            vertical-align: center;
+        }
+
+        .box-default-2 {
+            padding:3%;
+        }
+
+
+
+
+
+
+
+        /*footer*/
+        .footer {
+            padding:17px;
+            width: 1080px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 70% 30%;
+        }
+
+        .footer-content-1 {
+            text-align: left;
+        }
+
+        .footer-content-2 {
+            text-align: right;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+        <div class="header">
+            <div class="title">
+                <div class="title-content">
+                    <a href="/pages/main.html">자원 분산투자자 영쥐의<br>습관 Tracing</a>
+                </div>
+            </div>
+            <div class="navigator">
+                <div class="navigator-content">
+                    <a href="/pages/update/upload_image.html">upload image</a> | 
+                    <a href="/pages/update/update_chart.html">update chart</a> | 
+                    <a href="/pages/update/daily_record.html">daily record</a>
+                </div>                
+            </div>
+        </div>        
+    </header>
+    <main>
+        <div class="main-container">
+          <div class="box-default box-default-1">
+            <div class="temp-box-content">
+                <div class="chart-div">
+                    <canvas id="pieChartCanvas" width="300px" height="300px"></canvas>
+                </div>
+            </div>
+            <div class="temp-box-content2">
+                <a href="https://blog.naver.com/newyoung124" target="_blank">blog 📄</a> <br>
+                <a href="https://www.youtube.com/channel/UCoAj2kRnTsLxcUF_Z_ftgHg" target="_blank">v-log 📽️</a><br>
+                <a href="https://github.com/youngG124" target="_blank">github 👨🏻‍💻</a> 
+            </div>
+          </div>
+
+          <div class="box-default"><div class="temp-box-content2">read 📚</div></div>
+          <div class="box-default"><div class="temp-box-content2">workout 🏃🏻</div></div>          
+          <div class="box-default"><div class="temp-box-content2">5</div></div>
+          <div class="box-default"><div class="temp-box-content2">6</div></div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-content-1">
+                    우리의 뇌는 즉각적인 보상을 원하지만, 각자의 목표를 달성하기 위해서는 좋은 행동을 꾸준히 유지하는 것이 중요합니다.<br>
+                    이 프로젝트를 통해 습관을 기록하고 추적합니다.
+                </div>
+                <div class="footer-content-2">
+                    자산배분 투자하는 개발자의 블로그 | <a>about</a><br>
+                    문의 : newyoung124@naver.com
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(function() {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+
+        // 차트 누르면, 구글의 티커 검색으로 연결되도록!
+
+        window.onload = function () {
+            pieChartDraw();
+        }
+
+        let pieChartData = {
+            labels: ['NVDA', 'NASDAQ', 'CASH', 'AAPL', 'AMD', 'MSFT'],
+            datasets: [{
+                data: [14, 15, 11, 1, 1, 1],
+                backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
+            }] 
+        };
+
+        let pieChartDraw = function () {
+            let ctx = document.getElementById('pieChartCanvas').getContext('2d');
+            
+            window.pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: pieChartData,
+                options: {
+                    responsive: false
+                }
+            });
+        };
+
+        function get_price_with_ticker() {
+            console.log('clicked')
+            
+
+            $.ajax({
+            method:"GET",
+            url:"http://127.0.0.1:8000/prices/"+"nvda,aapl",
+            success : function(response) {
+                console.log(response)
+            }
+        })
+        }
+    </script>
+  </body>
+</html>

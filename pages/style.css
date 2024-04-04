@@ -12,7 +12,7 @@ body{
 
 /*header*/
 .header {
-    height: 150px;
+    height: 130px;
     width: 1080px;
     margin: auto;
 }
@@ -22,9 +22,10 @@ body{
     font-size:1.4em;
     float:left;
     position:relative;
+    display:flex;
+    align-items: center; /* vertically centers the inner div */
 }
 .title-content {
-    position:absolute;
     bottom:45%;
     font-weight: bold;
     font-size:26px;
