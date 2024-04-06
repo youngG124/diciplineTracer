@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css" type="text/css">
   </head>
   <body>
+    
     <div id="header"></div>
+
     <main>
         <div class="main-container">
           <div class="box-default box-default-1">
@@ -23,61 +25,20 @@
             </div>
           </div>
 
-          <div class="box-default"><div class="temp-box-content2">read 📚</div></div>
+          <div class="box-default"><div class="temp-box-content2">📚</div>
+          <div id="annual_calendar"></div>
+          </div>
           <div class="box-default"><div class="temp-box-content2">workout 🏃🏻</div></div>          
           <div class="box-default"><div class="temp-box-content2">5</div></div>
           <div class="box-default"><div class="temp-box-content2">6</div></div>
         </div>
     </main>
+
     <div id="footer"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <script>
-        $(function() {
-            $("#header").load("header.html");
-            $("#footer").load("footer.html");
-        });
-
-        // 차트 누르면, 구글의 티커 검색으로 연결되도록!
-
-        window.onload = function () {
-            pieChartDraw();
-        }
-
-        let pieChartData = {
-            labels: ['NVDA', 'NASDAQ', 'CASH', 'AAPL', 'AMD', 'MSFT'],
-            datasets: [{
-                data: [14, 15, 11, 1, 1, 1],
-                backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
-            }] 
-        };
-
-        let pieChartDraw = function () {
-            let ctx = document.getElementById('pieChartCanvas').getContext('2d');
-            
-            window.pieChart = new Chart(ctx, {
-                type: 'pie',
-                data: pieChartData,
-                options: {
-                    responsive: false
-                }
-            });
-        };
-
-        function get_price_with_ticker() {
-            console.log('clicked')
-            
-
-            $.ajax({
-            method:"GET",
-            url:"http://127.0.0.1:8000/prices/"+"nvda,aapl",
-            success : function(response) {
-                console.log(response)
-            }
-        })
-        }
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
