@@ -43,48 +43,58 @@ function get_price_with_ticker() {
 }
 
 
+// Get all elements with the specified class name
+var elements = document.getElementsByClassName('annual_calendar');
+
+// Iterate through each element and perform appendChild
+for (var i = 0; i < elements.length; i++) {
 
 
 
-let colStyle = 'width:12px; height:14px; background-Color:#b3b3b3; border-radius:2px;';
+    let colStyle = 'width:12px; height:13px; background-Color:#b3b3b3; border-radius:2px;';
 
-// get information of current date
-let today = new Date();
+    // get information of current date
+    let today = new Date();
 
-let today_day = today.getDay();
-console.log(today_day);
+    let today_day = today.getDay();
+    console.log(today_day);
 
-// create default annual calander
-tbody = document.createElement('table');
-tbody.style = 'border-spacing:5px;';
+    // create default annual calander
+    tbody = document.createElement('table');
+    tbody.style = 'border-spacing:5px;';
 
-const day_arr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-const week_arr = [];
+    const day_arr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    const week_arr = [];
 
-for(let i=0; i<52; i++) {
-    week_arr.push(i);
-}
-
-for(let i=0; i<day_arr.length; i++) {
-    let row = document.createElement('tr');
-    row.className = day_arr[i];
-
-    for(let j=0; j<week_arr.length; j++) {
-
-        if(j>50) {
-            if(i>today_day) {
-                break;
-            }
-        }
-
-        let col = document.createElement('td');
-        col.className = week_arr[j] + ', ' + day_arr[i];
-
-        col.style = colStyle;
-        row.appendChild(col);
+    for(let i=0; i<52; i++) {
+        week_arr.push(i);
     }
 
-    tbody.appendChild(row);
-}
+    for(let i=0; i<day_arr.length; i++) {
+        let row = document.createElement('tr');
+        row.className = day_arr[i];
 
-document.getElementById('annual_calendar').appendChild(tbody);
+        for(let j=0; j<week_arr.length; j++) {
+
+            if(j>50) {
+                if(i>today_day) {
+                    break;
+                }
+            }
+
+            let col = document.createElement('td');
+            col.className = week_arr[j] + ', ' + day_arr[i];
+
+            col.style = colStyle;
+            row.appendChild(col);
+        }
+
+        tbody.appendChild(row);
+    }
+
+
+
+
+    // Append the new element to the current element
+    elements[i].appendChild(tbody);
+}

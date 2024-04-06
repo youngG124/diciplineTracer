@@ -63,6 +63,8 @@ body{
     width: 100%;
     border: 1px solid #dee3eb;
     display:flex;
+    padding:15px;
+    margin-bottom:8px;
 }
 .box-default-1 {
     display: grid;
@@ -73,7 +75,6 @@ body{
 }
 .temp-box-content2 {
     padding:3%;
-    vertical-align: center;
 }
 
 .box-default-2 {
