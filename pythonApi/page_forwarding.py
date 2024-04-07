@@ -47,7 +47,7 @@ def update_item(item_id: int, item: Item):
 
 
 
-app.mount("/", StaticFiles(directory="../pages", html = True), name="static")
+app.mount("/", StaticFiles(directory="pages", html = True), name="static")
 
 
 if __name__ == "__main__":
