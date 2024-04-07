@@ -112,7 +112,7 @@ function handleClick() {
 
     $.ajax({
         method:"GET",
-        url:"http://127.0.0.1:8000/items/1",
+        url:"http://newyoung124.iptime.org:8000/items/1",
         success : function(response) {
             console.log(response)
         }
