@@ -75,10 +75,16 @@ body{
 }
 .temp-box-content2 {
     padding:3%;
+    vertical-align: center;
 }
 
 .box-default-2 {
     padding:3%;
+}
+
+.dicipline-icon {
+    cursor:pointer;
+    font-size:2.3em;
 }
 
 

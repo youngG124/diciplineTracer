@@ -1,9 +1,13 @@
+// header and footer
+
 $(function() {
     $("#header").load("header.html");
     $("#footer").load("footer.html");
 });
 
-// 차트 누르면, 구글의 티커 검색으로 연결되도록!
+// header and footer
+
+// pie chart start
 
 window.onload = function () {
     pieChartDraw();
@@ -42,15 +46,15 @@ function get_price_with_ticker() {
     })
 }
 
+// pie chart end
+
+// annual calendar start
 
 // Get all elements with the specified class name
 var elements = document.getElementsByClassName('annual_calendar');
 
 // Iterate through each element and perform appendChild
 for (var i = 0; i < elements.length; i++) {
-
-
-
     let colStyle = 'width:12px; height:13px; background-Color:#b3b3b3; border-radius:2px;';
 
     // get information of current date
@@ -92,9 +96,25 @@ for (var i = 0; i < elements.length; i++) {
         tbody.appendChild(row);
     }
 
-
-
-
-    // Append the new element to the current element
     elements[i].appendChild(tbody);
+}
+
+// annual calendar end
+
+
+
+
+// ajaxs
+function handleClick() {
+    // You can add more JavaScript functionality here
+
+    console.log("clicked!");
+
+    $.ajax({
+        method:"GET",
+        url:"http://127.0.0.1:8000/items/1",
+        success : function(response) {
+            console.log(response)
+        }
+    })
 }
