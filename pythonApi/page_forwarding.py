@@ -4,6 +4,12 @@ from pydantic import BaseModel
 from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
 
+import pymongo
+
+client = pymongo.MongoClient('mongodb://localhost:27017/')
+db = client["disciplineTracer"]
+collection = db["discipline"]
+
 app = FastAPI()
 
 origins = [
@@ -43,9 +49,6 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
-
-
-
 
 app.mount("/", StaticFiles(directory="pages", html = True), name="static")
 
