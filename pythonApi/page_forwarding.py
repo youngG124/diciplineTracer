@@ -53,6 +53,16 @@ def update_item(item_id: int, item: Item):
 app.mount("/", StaticFiles(directory="pages", html = True), name="static")
 
 
+@app.get("/read")
+def get_mongo():
+
+    data = {"discipline":"read"}
+
+    # Insert a single document
+    result = collection.find_one(data)
+
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port = 8000)
