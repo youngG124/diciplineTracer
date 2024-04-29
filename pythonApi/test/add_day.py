@@ -9,7 +9,7 @@ def add_day(discipline_name) :
     find_one_result = collection.find_one(discipline_search)
 
     a = find_one_result.get("yes_or_no")
-    a.insert(0, {"yes_or_no":0, "comment":""})
+    a.insert(0, {"yes_or_no":0, "comment":"this day2"})
 
     result = collection.update_one({"name":discipline_name}, {"$set": {"yes_or_no": a}})
 
