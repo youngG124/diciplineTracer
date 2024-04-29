@@ -8,18 +8,37 @@ collection = db["discipline"]
 # diciplines done
 discipline_booleans = []
 
-for i in range(365) :
-    a = {"yes_or_no" : 0, "comment" : ""}
-    discipline_booleans.append(a)
+a = {"yes_or_no" : 0, "comment" : ""}
+discipline_booleans.append(a)
 
+dcpln1 = {"icon":"📚", 
+          "name":"read", 
+          "explain":"read at least 30m", 
+          "yes_or_no": discipline_booleans}
 
+dcpln2 = {"icon":"🏃🏻‍♂️", 
+          "name":"running",
+          "explain":"5k run around 20m",
+          "yes_or_no": discipline_booleans}
 
+dcpln3 = {"icon":"🧹", 
+          "name":"cleaning", 
+          "explain":"clean floor or toilet", 
+          "yes_or_no": discipline_booleans}
 
+dcpln4 = {"icon":"💪🏼", 
+          "name":"push-ups", 
+          "explain":"40-35-30-25-20 for 15m", 
+          "yes_or_no": discipline_booleans}
 
-
-data = {"icon":"📚", "name":"read", "yes_or_no": discipline_booleans}
-
+dcpln5 = {"icon":"🥶", 
+          "name":"cold shower", 
+          "explain":"just cold shower and concentrate on pain", 
+          "yes_or_no": discipline_booleans}
 
 # Insert a single document
-result = collection.insert_one(data)
-print("Inserted document ID:", result.inserted_id)
+collection.insert_one(dcpln1)
+collection.insert_one(dcpln2)
+collection.insert_one(dcpln3)
+collection.insert_one(dcpln4)
+collection.insert_one(dcpln5)
