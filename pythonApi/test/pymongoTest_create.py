@@ -9,16 +9,15 @@ collection = db["discipline"]
 discipline_booleans = []
 
 for i in range(365) :
-    discipline_booleans.append(0)
-
-# comments everyday
-discipline_comments = []
-
-for i in range(365) :
-    discipline_comments.append("")
+    a = {"yes_or_no" : 0, "comment" : ""}
+    discipline_booleans.append(a)
 
 
-data = {"icon":"📚", "name":"read", "yes_or_no": discipline_booleans, "comment": discipline_comments}
+
+
+
+
+data = {"icon":"📚", "name":"read", "yes_or_no": discipline_booleans}
 
 
 # Insert a single document

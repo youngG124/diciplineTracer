@@ -6,7 +6,7 @@ collection = db["discipline"]
 
 data = {"name":"read"}
 
-
-# Insert a single document
 result = collection.find_one(data)
-print("Inserted document ID:", result)
+
+print(result.get("icon"))
+print(result.get("name"))
