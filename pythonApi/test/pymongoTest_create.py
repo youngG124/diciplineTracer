@@ -8,7 +8,7 @@ collection = db["discipline"]
 # diciplines done
 discipline_booleans = []
 
-a = {"yes_or_no" : 0, "comment" : ""}
+a = {"date" : "240502", "yes_or_no" : 0, "comment" : ""}
 discipline_booleans.append(a)
 
 dcpln1 = {"icon":"📚", 
