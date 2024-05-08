@@ -36,9 +36,17 @@ class Item(BaseModel):
 
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get("/readAllDisciplines")
+def read_all_disciplines():
+    cursor = collection.find({})
+
+    result = []
+
+    for document in cursor:
+        print(document.get("name"))
+        result.append(document.get("name"))
+
+    return result
 
 
 @app.get("/items/{item_id}")
@@ -51,15 +59,6 @@ def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
 
 app.mount("/", StaticFiles(directory="pages", html = True), name="static")
-
-
-@app.get("/read")
-def get_mongo():
-
-    data = {"discipline":"read"}
-
-    # Insert a single document
-    result = collection.find_one(data)
 
 
 
