@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 import pymongo
 
@@ -35,6 +36,7 @@ class Item(BaseModel):
     is_offer: Union[bool, None] = None
 
 
+from fastapi import Request
 
 @app.get("/readAllDisciplines")
 def read_all_disciplines():
