@@ -46,6 +46,13 @@ def read_all_disciplines():
         print(document.get("name"))
         result.append(document.get("name"))
 
+templates = Jinja2Templates(directory="pages")
+
+@app.get("/", response_class=HTMLResponse)
+async def read_main(request: Request):
+    return templates.TemplateResponse("main.html", {"request": request})
+
+
     return result
 
 
@@ -57,8 +64,6 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
-
-app.mount("/", StaticFiles(directory="pages", html = True), name="static")
 
 
 
